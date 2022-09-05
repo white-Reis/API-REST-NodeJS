@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.2.6"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "nodeapi_rest",
+  "version": "1.0.0",
+  "description": "Compass project  2022 ",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/white-Reis/API-REST-NodeJS.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Fabio Reis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/white-Reis/API-REST-NodeJS/issues"
+  },
+  "homepage": "https://github.com/white-Reis/API-REST-NodeJS#readme"
+}
