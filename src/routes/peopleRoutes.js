@@ -5,6 +5,7 @@ const router = express.Router();
 
 router
 .get("/people",peopleController.listPeoples)
+.get("/people/:name",peopleController.listPeopleForName)
 .get("/people/:id",peopleController.listPeopleForId)
 .post("/people",peopleController.createPeople)
 .put("/people/:id",peopleController.attPeople)
