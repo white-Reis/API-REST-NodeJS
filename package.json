@@ -9,7 +9,7 @@
   "name": "nodeapi_rest",
   "version": "1.0.0",
   "description": "Compass project  2022 ",
-  "main": "index.js",
+  "main": "server.js",
   "devDependencies": {
     "nodemon": "^2.0.19"
   },

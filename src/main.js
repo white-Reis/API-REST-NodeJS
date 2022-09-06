@@ -1,14 +1,12 @@
+import dataBase from './config/dataBaseConfig.js'
 import express from 'express'
 import routes from './routes/index.js'
-import dataBase from './config/dataBaseConfig.js'
+import peoples from './models/people.js'
 
-dataBase.on("error", console.log.bind(console,  'Erro de conexão'))
-dataBase.once("open", () => {
-  console.log('conexão com o banco concluida')
-})
+const app = express()
 
-const main = express()
-main.use(express.json())
-routes(main)
+app.use(express.json())
 
-export default main
+routes(app)
+
+export default app

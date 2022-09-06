@@ -1,5 +1,7 @@
-import main from './src/main.js'
+import app from './src/main.js'
 
 const port = process.env.PORT || 8080
 
-main.listen(port)
+app.listen(port, () => {
+  console.log('listen http://localhost:'+port)
+})

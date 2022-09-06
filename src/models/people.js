@@ -15,5 +15,5 @@ const peopleSchema = new mongoose.Schema(
   }
 )
 
-const peoples = mongoose.model("peoplesaaa",peopleSchema)
+const peoples = mongoose.model("peoples",peopleSchema)
 export default peoples

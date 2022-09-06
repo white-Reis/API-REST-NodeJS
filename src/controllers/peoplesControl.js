@@ -1,17 +1,17 @@
-import Peoples from "../models/people.js";
+import peoples from "../models/people.js";
 
 class PeoplesController {
 
   static listPeoples = (req, res) => {
-    Peoples.find((err, objects) => {
-      res.status(200).json(objects)
+    peoples.find((err, peoples) => {
+      res.status(200).json(peoples)
   })
   }
 
   static listPeopleForId = (req, res) => {
     const id = req.params.id;
 
-    Peoples.findById(id, (err, objects) => {
+    peoples.findById(id, (err, objects) => {
       if(!err) {
         res.status(200).send(objects);
       } else {
@@ -21,7 +21,7 @@ class PeoplesController {
   }
 
   static createPeople = (req, res) => {
-    let People = new Peoples(req.body);
+    let People = new peoples(req.body);
 
     People.save((err) => {
 
@@ -36,7 +36,7 @@ class PeoplesController {
   static attPeople = (req, res) => {
     const id = req.params.id;
 
-    Peoples.findByIdAndUpdate(id, {$set: req.body}, (err) => {
+    peoples.findByIdAndUpdate(id, {$set: req.body}, (err) => {
       if(!err) {
         res.status(200).send({message: 'People atualizado com sucesso'})
       } else {
@@ -45,10 +45,10 @@ class PeoplesController {
     })
   }
 
-  static DeletePeople = (req, res) => {
+  static deletePeople = (req, res) => {
     const id = req.params.id;
 
-    Peoples.findByIdAndDelete(id, (err) => {
+    peoples.findByIdAndDelete(id, (err) => {
       if(!err){
         res.status(200).send({message: 'People removido com sucesso'})
       } else {
@@ -59,4 +59,4 @@ class PeoplesController {
 
 }
 
-export default PeopleController
+export default PeoplesController
