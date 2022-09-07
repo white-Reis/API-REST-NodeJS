@@ -4,18 +4,29 @@ import peoples from "../models/people.js";
 class PeoplesController {
 
   static listPeoples = async (req, res) => {
-    peoples.find((err, peoples) => {
-      res.status(200).json(peoples)
-  })
-  }
+    const { page = 1, limit= 3}=req.query
+    try {
+      const Peoples = await peoples.find()
+      .limit(limit)
+      .skip((page - 1)*limit)
+      .exec()
+
+      const count = await peoples.countDocuments()
+        const totalPages = Math.ceil(count/limit)
+        res.json({ Peoples, totalPages, currentPage:page})
+      }
+      catch (err) {
+        res.status(404).send({ message: err.message})
+      }
+    }
 
   static listPeopleForId = (req, res) => {
     const id = req.params.id;
     peoples.findById(id, (err, objects) => {
       if(!err) {
-        res.status(200).send(objects);
+        res.status(204).send(objects);
       } else {
-        res.status(400).send({message: `${err.message} - ID does not exist.`})
+        res.status(404).send({message: `${err.message} - ID does not exist.`})
       }
     })
   }
@@ -23,9 +34,9 @@ class PeoplesController {
     const name = req.params.name;
     peoples.find({"name": name}, (err, objects) => {
       if(!err) {
-        res.status(200).send(objects);
+        res.status(204).send(objects);
       } else {
-        res.status(400).send({message: `${err.message} - Person not found.`})
+        res.status(404).send({message: `${err.message} - Person not found.`})
       }
     })
   }
@@ -38,7 +49,7 @@ class PeoplesController {
       if(!err) {
         res.status(201).send(People.toJSON())
       } else {
-        res.status(500).send({message: `${err.message} - failed to register person.`})
+        res.status(404).send({message: `${err.message} - failed to register person.`})
       }
     })
   }
@@ -46,9 +57,9 @@ class PeoplesController {
     const id = req.params.id;
     peoples.findByIdAndUpdate(id, {$set: req.body}, (err) => {
       if(!err) {
-        res.status(200).send({message: 'person successfully updated.'})
+        res.status(201).send({message: 'person successfully updated.'})
       } else {
-        res.status(500).send({message: err.message})
+        res.status(404).send({message: err.message+" - ID not found"})
       }
     })
   }
@@ -57,9 +68,9 @@ class PeoplesController {
     const id = req.params.id;
     peoples.findByIdAndDelete(id, (err) => {
       if(!err){
-        res.status(200).send({message: 'person successfully removed.'})
+        res.status(204).send({message: 'person successfully removed.'})
       } else {
-        res.status(500).send({message: err.message})
+        res.status(404).send({message: err.message + 'person not found'})
       }
     })
   }

@@ -11,9 +11,10 @@ const peopleSchema = new mongoose.Schema(
    complement:{type:String,required:true}, 
    state:{type:String,required:true}, 
    country:{type:String,required:true}, 
-   zipCode:{type:String,required:true,minlength:8} 
-  }
+   zipCode:{type:String,required:true,minlength:8} },
+   {
+    versionKey: false
+   }
 )
-
 const peoples = mongoose.model("peoples",peopleSchema)
 export default peoples
