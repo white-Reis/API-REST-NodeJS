@@ -1,14 +1,14 @@
-import express from "express";
-import peopleController from "../controllers/peoplesControl.js";
+import express from 'express'
+import peopleController from '../controllers/peoplesControl.js'
 
-const router = express.Router();
+const router = express.Router()
 
 router
-.get("/people",peopleController.listPeoples)
-.get("/people/:name",peopleController.listPeopleForName)
-.get("/people/:id",peopleController.listPeopleForId)
-.post("/people",peopleController.createPeople)
-.put("/people/:id",peopleController.attPeople)
-.delete("/people/:id",peopleController.deletePeople)
+    .get('/people', peopleController.listPeoples)
+    .get('/people/:name', peopleController.listPeopleForName)
+    .get('/people/:id', peopleController.listPeopleForId)
+    .post('/people', peopleController.createPeople)
+    .put('/people/:id', peopleController.attPeople)
+    .delete('/people/:id', peopleController.deletePeople)
 
-export default router;   
+export default router
