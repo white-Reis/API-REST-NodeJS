@@ -37,10 +37,8 @@ const peopleSchema = new mongoose.Schema({
     country: { type: String, required: true },
     zipCode: {
         type: String,
-        validate: /^\d{5}(?:[-\s]\d{4})?$/,
-        required: true,
-        minlength: 8,
-        maxlength: 8 | 9
+        validate: /^\d{5}(?:[-\s]\d{3})?$|^\d{8}/,
+        required: true
     }
 }, {
     versionKey: false
