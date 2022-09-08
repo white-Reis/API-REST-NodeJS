@@ -26,7 +26,7 @@ const peopleSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        validate: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+        validate: /^[0-9]*$/,
         required: true
     },
     password: { type: String, required: true, minlength: 6 },
